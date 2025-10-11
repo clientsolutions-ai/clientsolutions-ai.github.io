@@ -71,7 +71,7 @@
 
     section {
       padding: 6rem 5%;
-      max-width: 1200px;
+      max-width: 1440px;
       margin: auto;
     }
 
@@ -83,15 +83,39 @@
       color: #9ce7a4;
     }
 
-    .services, .live-demo, .retainers {
-      text-align: center;
+    /* Service Cards */
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
-    .services p, .live-demo p, .retainers p {
-      font-size: 1.2rem;
+    .service-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .service-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(156, 231, 164, 0.3);
+      border: 1px solid #9ce7a4;
+    }
+
+    .service-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: #9ce7a4;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
       color: #ccc;
-      max-width: 800px;
-      margin: 0 auto 2rem;
+      font-size: 1rem;
     }
 
     /* Contact Form */
@@ -134,10 +158,12 @@
 
     .success-message {
       display: none;
-      color: #9ce7a4;
+      opacity: 0;
       text-align: center;
-      margin-top: 1.5rem;
+      color: #9ce7a4;
       font-size: 1.1rem;
+      margin-top: 1.5rem;
+      transition: opacity 1s ease;
     }
 
     footer {
@@ -172,7 +198,24 @@
 
   <section id="services" class="services">
     <h3>Our Services</h3>
-    <p>From lead generation to process automation, we design tailored solutions powered by AI and automation technology.</p>
+    <div class="service-cards">
+      <div class="service-card">
+        <h4>AI Lead Generation</h4>
+        <p>Automate client acquisition and outreach with data-driven AI workflows that fill your pipeline 24/7.</p>
+      </div>
+      <div class="service-card">
+        <h4>Process Automation</h4>
+        <p>Streamline repetitive tasks with smart automations that boost efficiency and accuracy.</p>
+      </div>
+      <div class="service-card">
+        <h4>Chatbot Integration</h4>
+        <p>Engage customers instantly using intelligent chat systems designed for conversion and support.</p>
+      </div>
+      <div class="service-card">
+        <h4>Analytics & Optimization</h4>
+        <p>Gain clear visibility into performance metrics and continuously optimize with AI feedback loops.</p>
+      </div>
+    </div>
   </section>
 
   <section id="live-demo" class="live-demo">
@@ -220,6 +263,9 @@
 
       if (response.ok) {
         successMsg.style.display = 'block';
+        setTimeout(() => {
+          successMsg.style.opacity = '1';
+        }, 100);
         form.reset();
       } else {
         alert('There was a problem sending your message. Please try again.');
@@ -228,4 +274,3 @@
   </script>
 </body>
 </html>
-
