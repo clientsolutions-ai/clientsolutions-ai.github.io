@@ -1,243 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Client Solutions AI</title>
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4712/4712101.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClientSolutions.AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Hind:wght@400&display=swap" rel="stylesheet">
   <style>
-    /* Reset & Basic */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #000000, #0f0f0f, #2b2b2b);
-      color: #e5e5e5;
-      animation: glow 6s ease-in-out infinite;
+      font-family: 'Hind', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a);
+      color: #fff;
+      overflow-x: hidden;
     }
 
-    @keyframes glow {
-      0% { box-shadow: inset 0 0 200px rgba(0,255,150,0.06); }
-      50% { box-shadow: inset 0 0 250px rgba(0,255,150,0.12); }
-      100% { box-shadow: inset 0 0 200px rgba(0,255,150,0.06); }
-    }
-
-    a { text-decoration:none; }
-
-    /* Header */
     header {
       position: fixed;
-      top:0; left:0; width:100%;
+      top: 0;
+      width: 100%;
       background: rgba(255,255,255,0.02); /* almost invisible */
-      backdrop-filter: blur(10px); /* blur items behind */
-      z-index:50;
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      z-index: 1000;
     }
 
-    nav {
-      max-width: 1100px;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:1rem 1.5rem;
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      color: #9ce7a4;
     }
 
-    nav .logo { font-size:1.8rem; font-weight:bold; letter-spacing:1px; }
-    nav .logo span { color:#00ffa3; }
-
-    nav ul { display:flex; gap:2rem; list-style:none; }
-nav ul li a {
-  color:#e5e5e5;
-  font-weight:500;
-  transition:0.3s;
-  text-shadow: 0 0 8px rgba(0,255,150,0.5); /* subtle glow behind text */
-}
-nav ul li a:hover {
-  color:#00ffa3;
-  text-shadow: 0 0 12px rgba(0,255,150,0.8); /* stronger glow on hover */
-}
-
-    /* Hero Section */
-    #hero {
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:0 1.5rem;
+    nav a {
+      color: #fff;
+      margin-left: 2rem;
+      text-decoration: none;
+      transition: 0.3s;
     }
 
-    #hero h1 {
-      font-size:4rem;
-      margin-bottom:1rem;
-      background: linear-gradient(90deg, #00ffa3, #00b3ff);
+    nav a:hover {
+      color: #9ce7a4;
+    }
+
+    section.hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    section.hero h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
+      background: linear-gradient(90deg, #9ce7a4, #f5566e);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
     }
 
-    #hero p {
-      font-size:1.5rem;
-      margin-bottom:2rem;
-      max-width:700px;
-      line-height:1.6;
-      color:#cccccc;
+    section.hero p {
+      font-size: 1.5rem;
+      color: #ddd;
+      max-width: 800px;
     }
 
-    .button {
-      padding:1rem 2.5rem;
-      border:none;
-      border-radius:40px;
-      font-size:1.1rem;
-      background: linear-gradient(90deg, #00ffa3, #00b3ff);
-      color:#000;
-      font-weight:600;
-      cursor:pointer;
-      transition:0.3s;
-      box-shadow:0 0 15px rgba(0,255,150,0.3);
-    }
-    .button:hover { transform:scale(1.07); box-shadow:0 0 25px rgba(0,255,150,0.5); }
-
-    /* Sections */
-    section { padding:8rem 2rem; max-width:1100px; margin:auto; }
-
-    h2 {
-      font-size:2.5rem;
-      margin-bottom:2rem;
-      background: linear-gradient(90deg, #00ffa3, #00b3ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    section {
+      padding: 6rem 5%;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    p { font-size:1.1rem; color:#cccccc; line-height:1.6; margin-bottom:1.5rem; }
-
-    /* Services */
-    .services { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:2rem; }
-    .card {
-      background: rgba(255,255,255,0.05);
-      padding:2rem;
-      border-radius:15px;
-      transition:0.3s;
-      box-shadow:0 0 10px rgba(0,255,150,0.05);
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #9ce7a4;
     }
-    .card:hover { transform:translateY(-5px); box-shadow:0 0 25px rgba(0,255,150,0.15); }
 
-    /* Pricing / Retainers */
-    .pricing { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
-    .price-box {
-      background: rgba(255,255,255,0.05);
-      border-radius:15px;
-      padding:2rem 2.5rem;
-      width:280px;
-      text-align:center;
-      transition:0.3s;
+    .services, .live-demo, .retainers {
+      text-align: center;
     }
-    .price-box:hover { transform:translateY(-5px); box-shadow:0 0 25px rgba(0,255,150,0.15); }
-    .price-box h3 { font-size:1.5rem; margin-bottom:10px; }
-    .price { font-size:2rem; color:#00ffa3; font-weight:bold; margin:15px 0; }
+
+    .services p, .live-demo p, .retainers p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
 
     /* Contact Form */
-    form { display:flex; flex-direction:column; gap:1rem; max-width:500px; margin:auto; }
-    input, textarea {
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      background: rgba(255,255,255,0.08);
-      color:#e5e5e5;
-      font-size:1rem;
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    input::placeholder, textarea::placeholder { color:#888; }
 
-    footer { padding:2rem; font-size:0.9rem; color:#777; text-align:center; }
+    .contact input, .contact textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #9ce7a4;
+      padding: 0.8rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .contact input:focus, .contact textarea:focus {
+      outline: none;
+      border-bottom: 2px solid #f5566e;
+    }
+
+    .contact button {
+      background: linear-gradient(90deg, #9ce7a4, #f5566e);
+      border: none;
+      color: #fff;
+      padding: 0.9rem;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact button:hover {
+      opacity: 0.85;
+    }
+
+    .success-message {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      color: #9ce7a4;
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      display: none;
+    }
+
+    .success-message.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Honeypot (hidden) */
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
-<body>
 
-  <!-- Header -->
+<body>
   <header>
+    <h1>ClientSolutions.AI</h1>
     <nav>
-      <div class="logo">ClientSolutions<span>AI</span></div>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#demo">Live Demo</a></li>
-        <li><a href="#pricing">Monthly Retainers</a></li>
-        <li><a href="#contact">Get in Touch</a></li>
-      </ul>
+      <a href="#services">Services</a>
+      <a href="#live-demo">Live Demo</a>
+      <a href="#retainers">Monthly Retainers</a>
+      <a href="#contact">Get in Touch</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <h1>AI-Powered Automation for Smarter Businesses</h1>
-    <p>Streamline client onboarding, automate workflows, and scale your operations effortlessly.</p>
-    <a href="#services" class="button">Explore Solutions</a>
+  <section class="hero">
+    <h2>AI-Powered Automation That Works for You</h2>
+    <p>We build intelligent automation systems that help you scale your business while you sleep. Let AI handle the workload — you focus on growth.</p>
   </section>
 
-  <!-- Services Section -->
-  <section id="services">
-    <h2>Our Automation Services</h2>
-    <div class="services">
-      <div class="card">
-        <h3>CRM & Workflow Automation</h3>
-        <p>Streamline client management with intelligent CRMs, automated follow-ups, and sales pipelines that never miss a lead.</p>
-      </div>
-      <div class="card">
-        <h3>AI Chat Integrations</h3>
-        <p>Transform customer communication using trained AI assistants that respond instantly and close deals 24/7.</p>
-      </div>
-      <div class="card">
-        <h3>Operations Automation</h3>
-        <p>Eliminate repetitive work — connect systems like Notion, Slack, and Google Workspace into one seamless flow.</p>
-      </div>
-    </div>
+  <section id="services" class="services">
+    <h3>Our Services</h3>
+    <p>From lead generation to process automation, we design tailored solutions powered by AI and automation technology.</p>
   </section>
 
-  <!-- Live Demo Section -->
-  <section id="demo">
-    <h2>Live Demo</h2>
-    <p>See automation in action — explore how we integrate AI tools into real business workflows.</p>
-    <a class="button" href="https://github.com/clientsolutions-ai" target="_blank">View GitHub Projects</a>
+  <section id="live-demo" class="live-demo">
+    <h3>Live Demo</h3>
+    <p>See our automation in action — request a live demo today and discover what AI can do for your business.</p>
   </section>
 
-  <!-- Monthly Retainers / Pricing -->
-  <section id="pricing">
-    <h2>Monthly Retainers</h2>
-    <div class="pricing">
-      <div class="price-box">
-        <h3>Starter</h3>
-        <p>For small businesses</p>
-        <div class="price">$499/mo</div>
-        <p>• 1 AI Workflow<br>• Email Support<br>• 2 Monthly Tweaks</p>
-      </div>
-      <div class="price-box">
-        <h3>Pro</h3>
-        <p>For growing teams</p>
-        <div class="price">$999/mo</div>
-        <p>• 3 AI Workflows<br>• Chat + Email Support<br>• Weekly Optimization</p>
-      </div>
-      <div class="price-box">
-        <h3>Enterprise</h3>
-        <p>For scaling operations</p>
-        <div class="price">$1999/mo</div>
-        <p>• Unlimited Workflows<br>• 24/7 Priority Support<br>• Custom Integrations</p>
-      </div>
-    </div>
+  <section id="retainers" class="retainers">
+    <h3>Monthly Retainers</h3>
+    <p>Keep your systems optimized with ongoing AI management and updates. Monthly plans available for continuous support.</p>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Get in Touch</h2>
-    <form action="https://formspree.io/f/yourformid" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-      <button class="button" type="submit">Send Message</button>
+  <section id="contact" class="contact">
+    <h3>Get in Touch</h3>
+    <form id="contact-form" action="https://formspree.io/f/myznnvda" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="_replyto" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+      <!-- Honeypot Field -->
+      <input type="text" name="_gotcha" class="hidden" />
+
+      <button type="submit">Send Message</button>
     </form>
+    <p class="success-message" id="success-message">✅ Thank you! Your message has been sent successfully.</p>
   </section>
 
-  <!-- Footer -->
-  <footer>© 2025 Client Solutions AI — Powered by Intelligent Automation</footer>
+  <footer>
+    © 2025 ClientSolutions.AI — All rights reserved.
+  </footer>
 
+  <script>
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      // Block bots filling the honeypot
+      if (formData.get('_gotcha')) {
+        return false;
+      }
+
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        successMsg.style.display = 'block';
+        setTimeout(() => successMsg.classList.add('visible'), 10);
+        form.reset();
+      } else {
+        alert('There was a problem sending your message. Please try again.');
+      }
+    });
+  </script>
 </body>
 </html>
