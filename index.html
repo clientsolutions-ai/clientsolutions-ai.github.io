@@ -3,296 +3,229 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ClientSolutions AI</title>
+  <title>ClientSolutions.AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Hind:wght@400&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Poppins", sans-serif;
-      color: #f1f1f1;
-      background: linear-gradient(180deg, #0d0d0d, #141414, #0a0a0a);
+      font-family: 'Hind', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a);
+      color: #fff;
       overflow-x: hidden;
     }
 
     header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 5%;
-      z-index: 100;
-      backdrop-filter: blur(10px);
-      background: rgba(255,255,255,0.02);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 1000;
     }
 
     header h1 {
-      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.5rem;
       color: #9ce7a4;
-      letter-spacing: 1px;
     }
 
     nav a {
-      color: #f1f1f1;
+      color: #fff;
+      margin-left: 2rem;
       text-decoration: none;
-      margin: 0 1.2rem;
-      font-weight: 500;
-      transition: 0.3s ease;
+      transition: 0.3s;
     }
 
     nav a:hover {
       color: #9ce7a4;
     }
 
-    .hero {
+    section.hero {
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0 5%;
-      background: radial-gradient(circle at 30% 20%, #202020, transparent 70%),
-                  radial-gradient(circle at 70% 80%, #1a1a1a, transparent 70%);
+      padding: 2rem;
     }
 
-    .hero h2 {
-      font-size: 3.5rem;
+    section.hero h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
+      background: linear-gradient(90deg, #9ce7a4, #f5566e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: 1rem;
-      text-shadow: 0 0 15px #9ce7a4;
     }
 
-    .hero p {
-      max-width: 700px;
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin-bottom: 2rem;
-    }
-
-    .btn {
-      background: #9ce7a4;
-      color: #000;
-      padding: 0.9rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s ease;
-    }
-
-    .btn:hover {
-      background: #7ddf88;
-      box-shadow: 0 0 15px #9ce7a4;
+    section.hero p {
+      font-size: 1.5rem;
+      color: #ddd;
+      max-width: 800px;
     }
 
     section {
-      padding: 6rem 10%;
-      text-align: center;
+      padding: 6rem 5%;
+      max-width: 1200px;
+      margin: auto;
     }
 
     h3 {
-      font-size: 2.2rem;
-      color: #9ce7a4;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
       margin-bottom: 2rem;
-      text-shadow: 0 0 10px #9ce7a4;
-    }
-
-    .services-grid, .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.03);
-      border-radius: 15px;
-      padding: 2rem;
-      transition: 0.4s ease;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(156, 231, 164, 0.3);
-      border-color: rgba(156, 231, 164, 0.5);
-    }
-
-    .card h4 {
       color: #9ce7a4;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
     }
 
-    .card p {
-      font-size: 1rem;
-      opacity: 0.8;
-      line-height: 1.5;
+    .services, .live-demo, .retainers {
+      text-align: center;
     }
 
-    form {
-      max-width: 600px;
-      margin: 0 auto;
+    .services p, .live-demo p, .retainers p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Contact Form */
+    .contact form {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    input, textarea {
-      padding: 1rem;
+    .contact input, .contact textarea {
+      background: transparent;
       border: none;
       border-bottom: 2px solid #9ce7a4;
-      background: transparent;
-      color: #f1f1f1;
+      padding: 0.8rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
       font-size: 1rem;
     }
 
-    textarea {
-      resize: none;
-      height: 120px;
+    .contact input:focus, .contact textarea:focus {
+      outline: none;
+      border-bottom: 2px solid #f5566e;
+    }
+
+    .contact button {
+      background: linear-gradient(90deg, #9ce7a4, #f5566e);
+      border: none;
+      color: #fff;
+      padding: 0.9rem;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact button:hover {
+      opacity: 0.85;
     }
 
     .success-message {
-      color: #9ce7a4;
-      margin-top: 1rem;
-      font-weight: 600;
       display: none;
+      color: #9ce7a4;
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
     }
 
     footer {
-      padding: 2rem;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.02);
+      padding: 2rem 0;
+      font-size: 0.9rem;
+      color: #777;
     }
 
-    footer p {
-      font-size: 0.9rem;
-      opacity: 0.6;
+    /* Honeypot (hidden) */
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>ClientSolutions AI</h1>
+    <h1>ClientSolutions.AI</h1>
     <nav>
       <a href="#services">Services</a>
-      <a href="#demo">Live Demo</a>
+      <a href="#live-demo">Live Demo</a>
       <a href="#retainers">Monthly Retainers</a>
       <a href="#contact">Get in Touch</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Smart Automation That Scales with You</h2>
-    <p>We design intelligent workflows that eliminate manual effort and boost client efficiency — powered by AI and automation.</p>
-    <a href="#contact" class="btn">Start Your Automation Flow</a>
+    <h2>AI-Powered Automation That Works for You</h2>
+    <p>We build intelligent automation systems that help you scale your business while you sleep. Let AI handle the workload — you focus on growth.</p>
   </section>
 
-  <section id="services">
+  <section id="services" class="services">
     <h3>Our Services</h3>
-    <div class="services-grid">
-      <div class="card">
-        <h4>Workflow Automation</h4>
-        <p>Automate repetitive tasks with custom logic flows designed to save hours of manual work every week.</p>
-      </div>
-      <div class="card">
-        <h4>AI Client Support</h4>
-        <p>Integrate smart client chatbots and assistants that respond instantly and learn over time.</p>
-      </div>
-      <div class="card">
-        <h4>CRM Integration</h4>
-        <p>Seamlessly connect automation flows to your existing CRM and communication tools.</p>
-      </div>
-      <div class="card">
-        <h4>Custom Dashboards</h4>
-        <p>Track key business metrics in real-time using interactive dashboards built for decision-making.</p>
-      </div>
-    </div>
+    <p>From lead generation to process automation, we design tailored solutions powered by AI and automation technology.</p>
   </section>
 
-  <section id="demo">
+  <section id="live-demo" class="live-demo">
     <h3>Live Demo</h3>
-    <div class="cards-grid">
-      <div class="card">
-        <h4>AI Lead Flow</h4>
-        <p>Watch how incoming leads are automatically categorized, responded to, and assigned — within seconds.</p>
-      </div>
-      <div class="card">
-        <h4>Smart Email Parser</h4>
-        <p>Automatically extract client data from emails and push it into your CRM without lifting a finger.</p>
-      </div>
-      <div class="card">
-        <h4>Automation Dashboard</h4>
-        <p>Control and monitor your entire workflow system from one centralized view.</p>
-      </div>
-    </div>
+    <p>See our automation in action — request a live demo today and discover what AI can do for your business.</p>
   </section>
 
-  <section id="retainers">
+  <section id="retainers" class="retainers">
     <h3>Monthly Retainers</h3>
-    <div class="cards-grid">
-      <div class="card">
-        <h4>Starter Plan</h4>
-        <p>Perfect for small businesses looking to automate 1–2 core workflows.</p>
-      </div>
-      <div class="card">
-        <h4>Growth Plan</h4>
-        <p>Includes 5+ workflows, AI chat integration, and monthly optimization reports.</p>
-      </div>
-      <div class="card">
-        <h4>Enterprise Plan</h4>
-        <p>Full automation suite with unlimited workflows, dedicated support, and system monitoring.</p>
-      </div>
-    </div>
+    <p>Keep your systems optimized with ongoing AI management and updates. Monthly plans available for continuous support.</p>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="contact">
     <h3>Get in Touch</h3>
     <form id="contact-form" action="https://formspree.io/f/myznnvda" method="POST">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="text" name="honeypot" style="display:none">
-      <textarea name="message" placeholder="Your message..." required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-      <p class="success-message" id="success-msg">Message sent successfully!</p>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="_replyto" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+      <!-- Honeypot Field -->
+      <input type="text" name="_gotcha" class="hidden" />
+
+      <button type="submit">Send Message</button>
     </form>
+    <p class="success-message" id="success-message">✅ Thank you! Your message has been sent successfully.</p>
   </section>
 
   <footer>
-    <p>© 2025 ClientSolutions AI. All rights reserved.</p>
+    © 2025 ClientSolutions.AI — All rights reserved.
   </footer>
 
   <script>
-    const form = document.getElementById("contact-form");
-    const successMsg = document.getElementById("success-msg");
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-message');
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const formData = new FormData(form);
 
-      const honeypot = form.querySelector('[name="honeypot"]').value;
-      if (honeypot) return; // Spam bot detected
-
-      const data = new FormData(form);
       const response = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" }
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
       });
 
       if (response.ok) {
-        successMsg.style.display = "block";
+        successMsg.style.display = 'block';
         form.reset();
+      } else {
+        alert('There was a problem sending your message. Please try again.');
       }
     });
   </script>
 </body>
 </html>
+
