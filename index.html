@@ -18,7 +18,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.02); /* almost invisible */
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
@@ -71,7 +71,7 @@
 
     section {
       padding: 6rem 5%;
-      max-width: 1440px;
+      max-width: 1200px;
       margin: auto;
     }
 
@@ -83,39 +83,52 @@
       color: #9ce7a4;
     }
 
-    /* Service Cards */
-    .service-cards {
+    .services {
+      text-align: center;
+    }
+
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 3rem;
     }
 
     .service-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
       padding: 2rem;
-      border-radius: 20px;
-      text-align: center;
       transition: all 0.3s ease;
-      border: 1px solid transparent;
     }
 
     .service-card:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
       box-shadow: 0 0 20px rgba(156, 231, 164, 0.3);
-      border: 1px solid #9ce7a4;
+      border-color: #9ce7a4;
     }
 
     .service-card h4 {
       font-family: 'Montserrat', sans-serif;
       color: #9ce7a4;
-      font-size: 1.5rem;
       margin-bottom: 1rem;
+      font-size: 1.5rem;
     }
 
     .service-card p {
       color: #ccc;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .live-demo, .retainers {
+      text-align: center;
+    }
+
+    .live-demo p, .retainers p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 2rem;
     }
 
     /* Contact Form */
@@ -158,12 +171,17 @@
 
     .success-message {
       display: none;
-      opacity: 0;
-      text-align: center;
       color: #9ce7a4;
-      font-size: 1.1rem;
+      text-align: center;
       margin-top: 1.5rem;
-      transition: opacity 1s ease;
+      font-size: 1.1rem;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .success-message.show {
+      display: block;
+      opacity: 1;
     }
 
     footer {
@@ -175,7 +193,7 @@
 
     /* Honeypot (hidden) */
     .hidden {
-      display: none;
+      display: none !important;
     }
   </style>
 </head>
@@ -198,22 +216,22 @@
 
   <section id="services" class="services">
     <h3>Our Services</h3>
-    <div class="service-cards">
+    <div class="services-grid">
       <div class="service-card">
         <h4>AI Lead Generation</h4>
-        <p>Automate client acquisition and outreach with data-driven AI workflows that fill your pipeline 24/7.</p>
+        <p>Automate your lead capture, qualification, and follow-up using AI workflows that engage prospects 24/7.</p>
       </div>
       <div class="service-card">
-        <h4>Process Automation</h4>
-        <p>Streamline repetitive tasks with smart automations that boost efficiency and accuracy.</p>
+        <h4>Automation Setup</h4>
+        <p>Integrate your favorite apps and automate repetitive tasks — from emails to CRM updates — with zero code.</p>
       </div>
       <div class="service-card">
-        <h4>Chatbot Integration</h4>
-        <p>Engage customers instantly using intelligent chat systems designed for conversion and support.</p>
+        <h4>Chatbot Development</h4>
+        <p>Custom-trained AI chatbots for websites and sales funnels that respond like real human assistants.</p>
       </div>
       <div class="service-card">
-        <h4>Analytics & Optimization</h4>
-        <p>Gain clear visibility into performance metrics and continuously optimize with AI feedback loops.</p>
+        <h4>AI Integration Consulting</h4>
+        <p>We identify automation opportunities and implement scalable AI systems that deliver measurable ROI.</p>
       </div>
     </div>
   </section>
@@ -255,6 +273,9 @@
       e.preventDefault();
       const formData = new FormData(form);
 
+      // Stop bots using honeypot
+      if (formData.get('_gotcha')) return;
+
       const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
@@ -262,10 +283,7 @@
       });
 
       if (response.ok) {
-        successMsg.style.display = 'block';
-        setTimeout(() => {
-          successMsg.style.opacity = '1';
-        }, 100);
+        successMsg.classList.add('show');
         form.reset();
       } else {
         alert('There was a problem sending your message. Please try again.');
