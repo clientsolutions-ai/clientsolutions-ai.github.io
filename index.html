@@ -46,12 +46,16 @@
     nav .logo span { color:#00ffa3; }
 
     nav ul { display:flex; gap:2rem; list-style:none; }
-    nav ul li a {
-      color:#e5e5e5;
-      font-weight:500;
-      transition:0.3s;
-    }
-    nav ul li a:hover { color:#00ffa3; }
+nav ul li a {
+  color:#e5e5e5;
+  font-weight:500;
+  transition:0.3s;
+  text-shadow: 0 0 8px rgba(0,255,150,0.5); /* subtle glow behind text */
+}
+nav ul li a:hover {
+  color:#00ffa3;
+  text-shadow: 0 0 12px rgba(0,255,150,0.8); /* stronger glow on hover */
+}
 
     /* Hero Section */
     #hero {
