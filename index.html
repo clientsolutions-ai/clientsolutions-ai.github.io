@@ -18,7 +18,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255,255,255,0.02); /* almost invisible */
+      background: rgba(255,255,255,0.02);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
@@ -83,17 +83,17 @@
       color: #9ce7a4;
     }
 
-    .services {
+    .services, .live-demo, .retainers {
       text-align: center;
     }
 
-    .services-grid {
+    .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
 
-    .service-card {
+    .card {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 15px;
@@ -101,34 +101,23 @@
       transition: all 0.3s ease;
     }
 
-    .service-card:hover {
+    .card:hover {
       transform: scale(1.03);
       box-shadow: 0 0 20px rgba(156, 231, 164, 0.3);
       border-color: #9ce7a4;
     }
 
-    .service-card h4 {
+    .card h4 {
       font-family: 'Montserrat', sans-serif;
       color: #9ce7a4;
       margin-bottom: 1rem;
       font-size: 1.5rem;
     }
 
-    .service-card p {
+    .card p {
       color: #ccc;
       font-size: 1.1rem;
       line-height: 1.6;
-    }
-
-    .live-demo, .retainers {
-      text-align: center;
-    }
-
-    .live-demo p, .retainers p {
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 800px;
-      margin: 0 auto 2rem;
     }
 
     /* Contact Form */
@@ -191,7 +180,6 @@
       color: #777;
     }
 
-    /* Honeypot (hidden) */
     .hidden {
       display: none !important;
     }
@@ -214,48 +202,67 @@
     <p>We build intelligent automation systems that help you scale your business while you sleep. Let AI handle the workload — you focus on growth.</p>
   </section>
 
+  <!-- Services Section -->
   <section id="services" class="services">
     <h3>Our Services</h3>
-    <div class="services-grid">
-      <div class="service-card">
+    <div class="card-grid">
+      <div class="card">
         <h4>AI Lead Generation</h4>
         <p>Automate your lead capture, qualification, and follow-up using AI workflows that engage prospects 24/7.</p>
       </div>
-      <div class="service-card">
+      <div class="card">
         <h4>Automation Setup</h4>
         <p>Integrate your favorite apps and automate repetitive tasks — from emails to CRM updates — with zero code.</p>
       </div>
-      <div class="service-card">
+      <div class="card">
         <h4>Chatbot Development</h4>
         <p>Custom-trained AI chatbots for websites and sales funnels that respond like real human assistants.</p>
       </div>
-      <div class="service-card">
+      <div class="card">
         <h4>AI Integration Consulting</h4>
         <p>We identify automation opportunities and implement scalable AI systems that deliver measurable ROI.</p>
       </div>
     </div>
   </section>
 
+  <!-- Live Demo Section -->
   <section id="live-demo" class="live-demo">
     <h3>Live Demo</h3>
-    <p>See our automation in action — request a live demo today and discover what AI can do for your business.</p>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Interactive AI Workflow</h4>
+        <p>Experience a real-time AI workflow demonstration showing how automation can capture and qualify leads for your business.</p>
+      </div>
+      <div class="card">
+        <h4>Schedule a Live Session</h4>
+        <p>Book a live walkthrough with our team and see how automation can be tailored to your exact use case and stack.</p>
+      </div>
+    </div>
   </section>
 
+  <!-- Retainers Section -->
   <section id="retainers" class="retainers">
     <h3>Monthly Retainers</h3>
-    <p>Keep your systems optimized with ongoing AI management and updates. Monthly plans available for continuous support.</p>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Ongoing AI Optimization</h4>
+        <p>We continuously monitor and improve your automations to ensure they run smoothly, efficiently, and error-free.</p>
+      </div>
+      <div class="card">
+        <h4>Full Support & Maintenance</h4>
+        <p>Get dedicated monthly support to keep your workflows updated as your business evolves — peace of mind included.</p>
+      </div>
+    </div>
   </section>
 
+  <!-- Contact Section -->
   <section id="contact" class="contact">
     <h3>Get in Touch</h3>
     <form id="contact-form" action="https://formspree.io/f/myznnvda" method="POST">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="_replyto" placeholder="Your Email" required />
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-
-      <!-- Honeypot Field -->
       <input type="text" name="_gotcha" class="hidden" />
-
       <button type="submit">Send Message</button>
     </form>
     <p class="success-message" id="success-message">✅ Thank you! Your message has been sent successfully.</p>
@@ -272,8 +279,6 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-
-      // Stop bots using honeypot
       if (formData.get('_gotcha')) return;
 
       const response = await fetch(form.action, {
