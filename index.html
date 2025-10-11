@@ -6,7 +6,6 @@
   <title>Client Solutions AI</title>
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4712/4712101.png" />
   <style>
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -15,36 +14,44 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       background: linear-gradient(135deg, #000000, #0f0f0f, #2b2b2b);
       color: #e5e5e5;
       text-align: center;
-      overflow: hidden;
+      animation: glow 6s ease-in-out infinite;
       box-shadow: inset 0 0 200px rgba(0, 255, 150, 0.08);
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 100px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      background: linear-gradient(90deg, #00ffa3, #00b3ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     h1 {
       font-size: 3rem;
-      background: linear-gradient(90deg, #00ffa3, #00b3ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       margin-bottom: 1rem;
-      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
 
     p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      line-height: 1.6;
+      font-size: 1.1rem;
       color: #cccccc;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
     }
 
     .button {
-      margin-top: 2rem;
       padding: 0.75rem 2rem;
       border: none;
       border-radius: 30px;
@@ -61,9 +68,82 @@
       box-shadow: 0 0 20px rgba(0, 255, 150, 0.4);
     }
 
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 150, 0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 255, 150, 0.15);
+    }
+
+    .pricing {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .price-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px 40px;
+      width: 280px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .price-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 255, 150, 0.15);
+    }
+
+    .price-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00ffa3;
+      margin: 15px 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #e5e5e5;
+      font-size: 1rem;
+      resize: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #888;
+    }
+
     footer {
-      position: absolute;
-      bottom: 20px;
+      padding: 30px;
       font-size: 0.9rem;
       color: #777;
     }
@@ -73,19 +153,46 @@
       50% { box-shadow: inset 0 0 250px rgba(0, 255, 150, 0.12); }
       100% { box-shadow: inset 0 0 200px rgba(0, 255, 150, 0.06); }
     }
-
-    body {
-      animation: glow 6s ease-in-out infinite;
-    }
   </style>
 </head>
 
 <body>
-  <h1>Client Solutions AI</h1>
-  <p>Empowering businesses through smart automation, intelligent systems, and client-driven AI workflows.</p>
-  <button class="button" onclick="window.open('https://github.com/clientsolutions-ai', '_blank')">
-    View Our Projects
-  </button>
-  <footer>© 2025 Client Solutions AI — Powered by Intelligent Automation</footer>
-</body>
-</html>
+  <!-- Hero -->
+  <section id="home">
+    <h1>Client Solutions AI</h1>
+    <p>Empowering businesses through smart automation, intelligent systems, and client-driven workflows.</p>
+    <button class="button" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+      Explore Services
+    </button>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Automation Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>CRM & Workflow Automation</h3>
+        <p>Streamline client management with intelligent CRMs, automated follow-ups, and sales pipelines that never miss a lead.</p>
+      </div>
+      <div class="card">
+        <h3>AI Chat Integrations</h3>
+        <p>Transform customer communication using trained AI assistants that respond instantly and close deals 24/7.</p>
+      </div>
+      <div class="card">
+        <h3>Operations Automation</h3>
+        <p>Eliminate repetitive work — connect systems like Notion, Slack, and Google Workspace into one seamless flow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demo -->
+  <section id="demo">
+    <h2>Live Demo</h2>
+    <p>See automation in action — explore how we integrate AI tools into real business workflows.</p>
+    <button class="button" onclick="window.open('https://github.com/clientsolutions-ai', '_blank')">View GitHub Projects</button>
+  </section>
+
+  <!-- Retainers -->
+  <section id="pricing">
+    <h2>Monthly Retainers</h2>
+    <div class="pr
