@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClientSolutions.AI</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Hind:wght@400&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -14,11 +15,12 @@
       overflow-x: hidden;
     }
 
+    /* HEADER */
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255,255,255,0.02); /* almost invisible */
+      background: rgba(255,255,255,0.02);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
@@ -44,6 +46,7 @@
       color: #9ce7a4;
     }
 
+    /* HERO */
     section.hero {
       height: 100vh;
       display: flex;
@@ -83,18 +86,80 @@
       color: #9ce7a4;
     }
 
-    .services, .live-demo, .retainers {
+    /* SERVICES */
+    .services {
       text-align: center;
     }
 
-    .services p, .live-demo p, .retainers p {
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(156,231,164,0.15), transparent 70%);
+      transition: opacity 0.5s ease;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 20px rgba(156,231,164,0.3), 0 0 40px rgba(245,86,110,0.2);
+    }
+
+    .service-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: #9ce7a4;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card p {
+      font-size: 1.1rem;
+      color: #ccc;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* OTHER SECTIONS */
+    .live-demo, .retainers {
+      text-align: center;
+    }
+
+    .live-demo p, .retainers p {
       font-size: 1.2rem;
       color: #ccc;
       max-width: 800px;
       margin: 0 auto 2rem;
     }
 
-    /* Contact Form */
+    /* CONTACT FORM */
     .contact form {
       display: flex;
       flex-direction: column;
@@ -154,10 +219,7 @@
       color: #777;
     }
 
-    /* Honeypot (hidden) */
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
   </style>
 </head>
 
@@ -179,7 +241,20 @@
 
   <section id="services" class="services">
     <h3>Our Services</h3>
-    <p>From lead generation to process automation, we design tailored solutions powered by AI and automation technology.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <h4>Client Automation Systems</h4>
+        <p>Automate lead capture, client onboarding, and communications with AI-driven workflows that save hours every day.</p>
+      </div>
+      <div class="service-card">
+        <h4>Smart Data Dashboards</h4>
+        <p>Real-time insights powered by automation. Centralize metrics and decision data into a single interactive dashboard.</p>
+      </div>
+      <div class="service-card">
+        <h4>AI Workflow Integration</h4>
+        <p>Seamlessly integrate AI into your existing business operations for enhanced efficiency and faster scalability.</p>
+      </div>
+    </div>
   </section>
 
   <section id="live-demo" class="live-demo">
@@ -198,10 +273,7 @@
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="_replyto" placeholder="Your Email" required />
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-
-      <!-- Honeypot Field -->
       <input type="text" name="_gotcha" class="hidden" />
-
       <button type="submit">Send Message</button>
     </form>
     <p class="success-message" id="success-message">✅ Thank you! Your message has been sent successfully.</p>
@@ -218,11 +290,7 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-
-      // Block bots filling the honeypot
-      if (formData.get('_gotcha')) {
-        return false;
-      }
+      if (formData.get('_gotcha')) return false;
 
       const response = await fetch(form.action, {
         method: 'POST',
@@ -234,6 +302,10 @@
         successMsg.style.display = 'block';
         setTimeout(() => successMsg.classList.add('visible'), 10);
         form.reset();
+        setTimeout(() => {
+          successMsg.classList.remove('visible');
+          setTimeout(() => successMsg.style.display = 'none', 800);
+        }, 5000);
       } else {
         alert('There was a problem sending your message. Please try again.');
       }
