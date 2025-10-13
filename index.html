@@ -40,9 +40,7 @@
       transition: 0.3s;
     }
 
-    nav a:hover {
-      color: #9ce7a4;
-    }
+    nav a:hover { color: #9ce7a4; }
 
     section.hero {
       height: 100vh;
@@ -83,17 +81,14 @@
       color: #9ce7a4;
     }
 
-    .services, .live-demo, .retainers {
-      text-align: center;
-    }
-
-    .card-grid {
+    /* SERVICES */
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
 
-    .card {
+    .service-card {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 15px;
@@ -101,26 +96,106 @@
       transition: all 0.3s ease;
     }
 
-    .card:hover {
+    .service-card:hover {
       transform: scale(1.03);
       box-shadow: 0 0 20px rgba(156, 231, 164, 0.3);
       border-color: #9ce7a4;
     }
 
-    .card h4 {
+    .service-card h4 {
       font-family: 'Montserrat', sans-serif;
       color: #9ce7a4;
       margin-bottom: 1rem;
       font-size: 1.5rem;
     }
 
-    .card p {
-      color: #ccc;
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .service-card p { color: #ccc; font-size: 1.1rem; line-height: 1.6; }
+
+    /* LIVE DEMO SLIDER */
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 15px;
     }
 
-    /* Contact Form */
+    .slides {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .slide h4 {
+      color: #9ce7a4;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .slide p { color: #ccc; }
+
+    .slider-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 0.5rem;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      background: #666;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .dot.active { background: #9ce7a4; }
+
+    /* RETAINERS */
+    .retainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .retainer-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .retainer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(156,231,164,0.3);
+      border-color: #9ce7a4;
+    }
+
+    .retainer-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: #9ce7a4;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .retainer-card p { color: #ccc; line-height: 1.6; }
+
+    /* CONTACT */
     .contact form {
       display: flex;
       flex-direction: column;
@@ -154,9 +229,7 @@
       transition: 0.3s;
     }
 
-    .contact button:hover {
-      opacity: 0.85;
-    }
+    .contact button:hover { opacity: 0.85; }
 
     .success-message {
       display: none;
@@ -173,19 +246,16 @@
       opacity: 1;
     }
 
+    .hidden { display: none !important; }
+
     footer {
       text-align: center;
       padding: 2rem 0;
       font-size: 0.9rem;
       color: #777;
     }
-
-    .hidden {
-      display: none !important;
-    }
   </style>
 </head>
-
 <body>
   <header>
     <h1>ClientSolutions.AI</h1>
@@ -202,60 +272,41 @@
     <p>We build intelligent automation systems that help you scale your business while you sleep. Let AI handle the workload — you focus on growth.</p>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="services">
+  <section id="services">
     <h3>Our Services</h3>
-    <div class="card-grid">
-      <div class="card">
-        <h4>AI Lead Generation</h4>
-        <p>Automate your lead capture, qualification, and follow-up using AI workflows that engage prospects 24/7.</p>
-      </div>
-      <div class="card">
-        <h4>Automation Setup</h4>
-        <p>Integrate your favorite apps and automate repetitive tasks — from emails to CRM updates — with zero code.</p>
-      </div>
-      <div class="card">
-        <h4>Chatbot Development</h4>
-        <p>Custom-trained AI chatbots for websites and sales funnels that respond like real human assistants.</p>
-      </div>
-      <div class="card">
-        <h4>AI Integration Consulting</h4>
-        <p>We identify automation opportunities and implement scalable AI systems that deliver measurable ROI.</p>
-      </div>
+    <div class="services-grid">
+      <div class="service-card"><h4>AI Lead Generation</h4><p>Automate lead capture and follow-up with AI workflows that engage 24/7.</p></div>
+      <div class="service-card"><h4>Automation Setup</h4><p>Integrate your favorite apps and eliminate repetitive manual work.</p></div>
+      <div class="service-card"><h4>Chatbot Development</h4><p>Custom-trained chatbots for websites and sales funnels.</p></div>
+      <div class="service-card"><h4>AI Integration Consulting</h4><p>Identify automation opportunities and deploy scalable AI solutions.</p></div>
     </div>
   </section>
 
-  <!-- Live Demo Section -->
-  <section id="live-demo" class="live-demo">
+  <section id="live-demo">
     <h3>Live Demo</h3>
-    <div class="card-grid">
-      <div class="card">
-        <h4>Interactive AI Workflow</h4>
-        <p>Experience a real-time AI workflow demonstration showing how automation can capture and qualify leads for your business.</p>
+    <div class="slider" id="slider">
+      <div class="slides">
+        <div class="slide"><h4>Project 1: Smart CRM Flow</h4><p>Automated customer follow-ups and instant qualification system.</p></div>
+        <div class="slide"><h4>Project 2: Email AI Assistant</h4><p>AI-driven email responses that save hours of manual communication.</p></div>
+        <div class="slide"><h4>Project 3: Client Onboarding Bot</h4><p>AI chatbot that automates new client onboarding and FAQs.</p></div>
       </div>
-      <div class="card">
-        <h4>Schedule a Live Session</h4>
-        <p>Book a live walkthrough with our team and see how automation can be tailored to your exact use case and stack.</p>
-      </div>
+    </div>
+    <div class="slider-buttons">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
     </div>
   </section>
 
-  <!-- Retainers Section -->
-  <section id="retainers" class="retainers">
+  <section id="retainers">
     <h3>Monthly Retainers</h3>
-    <div class="card-grid">
-      <div class="card">
-        <h4>Ongoing AI Optimization</h4>
-        <p>We continuously monitor and improve your automations to ensure they run smoothly, efficiently, and error-free.</p>
-      </div>
-      <div class="card">
-        <h4>Full Support & Maintenance</h4>
-        <p>Get dedicated monthly support to keep your workflows updated as your business evolves — peace of mind included.</p>
-      </div>
+    <div class="retainer-grid">
+      <div class="retainer-card"><h4>Starter Plan</h4><p>Perfect for small businesses starting with automation. Includes 2 AI workflows and monthly optimization.</p></div>
+      <div class="retainer-card"><h4>Growth Plan</h4><p>Designed for scaling teams. Includes up to 5 automations, analytics dashboard, and premium support.</p></div>
+      <div class="retainer-card"><h4>Enterprise Plan</h4><p>Full-service AI management with unlimited workflows and dedicated consultant.</p></div>
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="contact">
     <h3>Get in Touch</h3>
     <form id="contact-form" action="https://formspree.io/f/myznnvda" method="POST">
@@ -268,25 +319,21 @@
     <p class="success-message" id="success-message">✅ Thank you! Your message has been sent successfully.</p>
   </section>
 
-  <footer>
-    © 2025 ClientSolutions.AI — All rights reserved.
-  </footer>
+  <footer>© 2025 ClientSolutions.AI — All rights reserved.</footer>
 
   <script>
+    // Contact form
     const form = document.getElementById('contact-form');
     const successMsg = document.getElementById('success-message');
-
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
       if (formData.get('_gotcha')) return;
-
       const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
       });
-
       if (response.ok) {
         successMsg.classList.add('show');
         form.reset();
@@ -294,6 +341,26 @@
         alert('There was a problem sending your message. Please try again.');
       }
     });
+
+    // Live Demo Slider
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.dot');
+    let index = 0;
+
+    function showSlide(i) {
+      slides.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach((dot, idx) => dot.classList.toggle('active', idx === i));
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => {
+      index = i;
+      showSlide(index);
+    }));
+
+    setInterval(() => {
+      index = (index + 1) % 3;
+      showSlide(index);
+    }, 5000);
   </script>
 </body>
 </html>
