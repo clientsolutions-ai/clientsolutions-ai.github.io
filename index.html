@@ -3,364 +3,257 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ClientSolutions.AI</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Hind:wght@400&display=swap" rel="stylesheet">
+  <title>ClientSolutions AI</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
     body {
-      font-family: 'Hind', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a);
-      color: #fff;
+      color: #e5e5e5;
+      background: linear-gradient(180deg, #0a0a0a, #141414, #1a1a1a);
       overflow-x: hidden;
     }
 
+    /* ===== HEADER ===== */
     header {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
       background: rgba(255,255,255,0.02);
       backdrop-filter: blur(10px);
+      z-index: 50;
+    }
+    nav {
+      max-width: 1100px;
+      margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 5%;
-      z-index: 1000;
+      padding: 1rem 1.5rem;
     }
-
-    header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
-      color: #9ce7a4;
+    nav .logo { font-size: 1.8rem; font-weight: bold; letter-spacing: 1px; }
+    nav .logo span { color: #00ffa3; }
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
     }
-
-    nav a {
-      color: #fff;
-      margin-left: 2rem;
-      text-decoration: none;
+    nav ul li a {
+      color: #e5e5e5;
+      font-weight: 500;
       transition: 0.3s;
+      text-decoration: none;
     }
+    nav ul li a:hover { color: #00ffa3; }
 
-    nav a:hover { color: #9ce7a4; }
-
-    section.hero {
+    /* ===== HERO ===== */
+    section#hero {
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 2rem;
+      padding: 0 1rem;
     }
-
-    section.hero h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 4rem;
-      background: linear-gradient(90deg, #9ce7a4, #f5566e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
+    #hero h1 { font-size: 4rem; margin-bottom: 1rem; }
+    #hero p { font-size: 1.3rem; max-width: 700px; margin-bottom: 2rem; }
+    #hero a {
+      padding: 0.75rem 2rem;
+      background: #00ffa3;
+      color: #0a0a0a;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
     }
+    #hero a:hover { background: #00c97f; }
 
-    section.hero p {
-      font-size: 1.5rem;
-      color: #ddd;
-      max-width: 800px;
-    }
-
+    /* ===== SECTIONS ===== */
     section {
-      padding: 6rem 5%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
       text-align: center;
-      margin-bottom: 2rem;
-      color: #9ce7a4;
     }
+    h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #00ffa3; }
 
-    /* SERVICES */
-    .services-grid {
+    /* ===== CARDS ===== */
+    .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
-
-    .service-card {
+    .card {
       background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
       padding: 2rem;
-      transition: all 0.3s ease;
+      border-radius: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .service-card:hover {
+    .card:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(156, 231, 164, 0.3);
-      border-color: #9ce7a4;
+      box-shadow: 0 0 20px rgba(0,255,163,0.3);
     }
 
-    .service-card h4 {
-      font-family: 'Montserrat', sans-serif;
-      color: #9ce7a4;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .service-card p { color: #ccc; font-size: 1.1rem; line-height: 1.6; }
-
-    /* LIVE DEMO SLIDER */
+    /* ===== LIVE DEMO SLIDER ===== */
     .slider {
       position: relative;
       width: 100%;
-      max-width: 900px;
-      margin: 2rem auto;
       overflow: hidden;
-      border-radius: 15px;
+      border-radius: 1rem;
     }
-
     .slides {
       display: flex;
-      transition: transform 0.6s ease-in-out;
+      transition: transform 0.5s ease;
     }
-
     .slide {
       min-width: 100%;
       box-sizing: border-box;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
       padding: 2rem;
-      text-align: center;
     }
-
-    .slide h4 {
-      color: #9ce7a4;
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .slide p { color: #ccc; }
-
-    .slider-buttons {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-      gap: 0.5rem;
-    }
-
-    .dot {
-      height: 10px;
-      width: 10px;
-      background: #666;
-      border-radius: 50%;
+    .slider button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 255, 163, 0.3);
+      border: none;
+      color: white;
+      font-size: 2rem;
       cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
       transition: background 0.3s;
     }
+    .slider button:hover { background: rgba(0, 255, 163, 0.6); }
+    .prev { left: 1rem; }
+    .next { right: 1rem; }
 
-    .dot.active { background: #9ce7a4; }
-
-    /* RETAINERS */
-    .retainer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .retainer-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .retainer-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(156,231,164,0.3);
-      border-color: #9ce7a4;
-    }
-
-    .retainer-card h4 {
-      font-family: 'Montserrat', sans-serif;
-      color: #9ce7a4;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .retainer-card p { color: #ccc; line-height: 1.6; }
-
-    /* CONTACT */
-    .contact form {
-      display: flex;
-      flex-direction: column;
+    /* ===== CONTACT FORM ===== */
+    form {
       max-width: 600px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-
-    .contact input, .contact textarea {
-      background: transparent;
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
       border: none;
-      border-bottom: 2px solid #9ce7a4;
-      padding: 0.8rem;
-      color: #fff;
-      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      color: #e5e5e5;
       font-size: 1rem;
     }
-
-    .contact input:focus, .contact textarea:focus {
-      outline: none;
-      border-bottom: 2px solid #f5566e;
-    }
-
-    .contact button {
-      background: linear-gradient(90deg, #9ce7a4, #f5566e);
+    button {
+      padding: 0.75rem;
       border: none;
-      color: #fff;
-      padding: 0.9rem;
-      font-size: 1.1rem;
-      border-radius: 10px;
+      border-radius: 8px;
+      background: #00ffa3;
+      color: #0a0a0a;
+      font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
-
-    .contact button:hover { opacity: 0.85; }
-
-    .success-message {
+    button:hover { background: #00c97f; }
+    .hidden-field {
       display: none;
-      color: #9ce7a4;
-      text-align: center;
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
     }
-
-    .success-message.show {
-      display: block;
-      opacity: 1;
-    }
-
-    .hidden { display: none !important; }
-
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      font-size: 0.9rem;
-      color: #777;
+    #successMessage {
+      margin-top: 1rem;
+      color: #00ffa3;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>ClientSolutions.AI</h1>
     <nav>
-      <a href="#services">Services</a>
-      <a href="#live-demo">Live Demo</a>
-      <a href="#retainers">Monthly Retainers</a>
-      <a href="#contact">Get in Touch</a>
+      <div class="logo">ClientSolutions<span>AI</span></div>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#demo">Live Demo</a></li>
+        <li><a href="#pricing">Monthly Retainers</a></li>
+        <li><a href="#contact">Get in Touch</a></li>
+      </ul>
     </nav>
   </header>
 
-  <section class="hero">
-    <h2>AI-Powered Automation That Works for You</h2>
-    <p>We build intelligent automation systems that help you scale your business while you sleep. Let AI handle the workload — you focus on growth.</p>
+  <section id="hero">
+    <h1>Smart Automation for Modern Businesses</h1>
+    <p>Streamline workflows, automate client onboarding, and scale your operations effortlessly using AI-driven systems.</p>
+    <a href="#services">Explore Services</a>
   </section>
 
   <section id="services">
-    <h3>Our Services</h3>
-    <div class="services-grid">
-      <div class="service-card"><h4>AI Lead Generation</h4><p>Automate lead capture and follow-up with AI workflows that engage 24/7.</p></div>
-      <div class="service-card"><h4>Automation Setup</h4><p>Integrate your favorite apps and eliminate repetitive manual work.</p></div>
-      <div class="service-card"><h4>Chatbot Development</h4><p>Custom-trained chatbots for websites and sales funnels.</p></div>
-      <div class="service-card"><h4>AI Integration Consulting</h4><p>Identify automation opportunities and deploy scalable AI solutions.</p></div>
+    <h2>Our Services</h2>
+    <div class="card-grid">
+      <div class="card"><h3>AI Workflow Automation</h3><p>Automate client and business tasks with no-code AI solutions.</p></div>
+      <div class="card"><h3>CRM Integrations</h3><p>Connect and synchronize your tools for a smooth business flow.</p></div>
+      <div class="card"><h3>Chat Automation</h3><p>24/7 client communication powered by natural language AI.</p></div>
+      <div class="card"><h3>Analytics Dashboard</h3><p>Track performance metrics and business KPIs in real-time.</p></div>
     </div>
   </section>
 
-  <section id="live-demo">
-    <h3>Live Demo</h3>
-    <div class="slider" id="slider">
-      <div class="slides">
-        <div class="slide"><h4>Project 1: Smart CRM Flow</h4><p>Automated customer follow-ups and instant qualification system.</p></div>
-        <div class="slide"><h4>Project 2: Email AI Assistant</h4><p>AI-driven email responses that save hours of manual communication.</p></div>
-        <div class="slide"><h4>Project 3: Client Onboarding Bot</h4><p>AI chatbot that automates new client onboarding and FAQs.</p></div>
+  <section id="demo">
+    <h2>Live Demo</h2>
+    <div class="slider">
+      <div class="slides" id="slides">
+        <div class="slide card"><h3>Project 1</h3><p>Example of automated client onboarding process.</p></div>
+        <div class="slide card"><h3>Project 2</h3><p>Smart workflow integration with real-time data.</p></div>
+        <div class="slide card"><h3>Project 3</h3><p>AI Chat automation for small businesses.</p></div>
       </div>
-    </div>
-    <div class="slider-buttons">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+      <button class="prev" onclick="moveSlide(-1)">❮</button>
+      <button class="next" onclick="moveSlide(1)">❯</button>
     </div>
   </section>
 
-  <section id="retainers">
-    <h3>Monthly Retainers</h3>
-    <div class="retainer-grid">
-      <div class="retainer-card"><h4>Starter Plan</h4><p>Perfect for small businesses starting with automation. Includes 2 AI workflows and monthly optimization.</p></div>
-      <div class="retainer-card"><h4>Growth Plan</h4><p>Designed for scaling teams. Includes up to 5 automations, analytics dashboard, and premium support.</p></div>
-      <div class="retainer-card"><h4>Enterprise Plan</h4><p>Full-service AI management with unlimited workflows and dedicated consultant.</p></div>
+  <section id="pricing">
+    <h2>Monthly Retainers</h2>
+    <div class="card-grid">
+      <div class="card"><h3>Starter</h3><p>$499/month — Automation setup for small businesses.</p></div>
+      <div class="card"><h3>Professional</h3><p>$999/month — Includes analytics and AI chat integration.</p></div>
+      <div class="card"><h3>Enterprise</h3><p>$1999/month — Custom workflow automation and dedicated support.</p></div>
     </div>
   </section>
 
-  <section id="contact" class="contact">
-    <h3>Get in Touch</h3>
-    <form id="contact-form" action="https://formspree.io/f/myznnvda" method="POST">
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <form id="contactForm" action="https://formspree.io/f/myznnvda" method="POST">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="_replyto" placeholder="Your Email" required />
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <input type="text" name="_gotcha" class="hidden" />
+      <input type="text" name="_gotcha" class="hidden-field" /> <!-- Honeypot -->
       <button type="submit">Send Message</button>
+      <p id="successMessage" style="display:none;">✅ Message sent successfully!</p>
     </form>
-    <p class="success-message" id="success-message">✅ Thank you! Your message has been sent successfully.</p>
   </section>
 
-  <footer>© 2025 ClientSolutions.AI — All rights reserved.</footer>
-
   <script>
-    // Contact form
-    const form = document.getElementById('contact-form');
-    const successMsg = document.getElementById('success-message');
+    // Slider
+    let index = 0;
+    function moveSlide(step) {
+      const slides = document.getElementById("slides");
+      const total = slides.children.length;
+      index = (index + step + total) % total;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // Form success message
+    const form = document.getElementById('contactForm');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      if (formData.get('_gotcha')) return;
       const response = await fetch(form.action, {
-        method: 'POST',
+        method: form.method,
         body: formData,
         headers: { 'Accept': 'application/json' }
       });
       if (response.ok) {
-        successMsg.classList.add('show');
+        document.getElementById('successMessage').style.display = 'block';
         form.reset();
-      } else {
-        alert('There was a problem sending your message. Please try again.');
       }
     });
-
-    // Live Demo Slider
-    const slides = document.querySelector('.slides');
-    const dots = document.querySelectorAll('.dot');
-    let index = 0;
-
-    function showSlide(i) {
-      slides.style.transform = `translateX(-${i * 100}%)`;
-      dots.forEach((dot, idx) => dot.classList.toggle('active', idx === i));
-    }
-
-    dots.forEach((dot, i) => dot.addEventListener('click', () => {
-      index = i;
-      showSlide(index);
-    }));
-
-    setInterval(() => {
-      index = (index + 1) % 3;
-      showSlide(index);
-    }, 5000);
   </script>
 </body>
 </html>
