@@ -3,141 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lead Generation Demo | Client Solutions AI</title>
+  <title>Lead Generation Demo | ClientSolutions.AI</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #000000);
-      color: white;
-      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, #0a0a0a, #111, #1a1a1a);
+      color: #f5f5f5;
+      font-family: 'Montserrat', sans-serif;
     }
-    .glass {
-      background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
+    .hidden-field { display: none; }
     .success-message {
       display: none;
-      color: #9ce7a4;
-      text-align: center;
-      font-weight: bold;
       margin-top: 1rem;
+      color: #9ce7a4;
+      font-weight: 600;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #9ce7a4;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 0 25px rgba(156,231,164,0.15);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 35px rgba(156,231,164,0.25);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center">
 
-  <!-- Navbar -->
-  <nav class="fixed top-0 w-full z-50 glass p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-green-400">ClientSolutions AI</h1>
-    <div class="space-x-6 text-lg">
-      <a href="index.html" class="hover:text-green-400">Home</a>
-      <a href="lead-demo.html" class="text-green-400 font-semibold">Live Demo</a>
-      <a href="#contact" class="hover:text-green-400">Contact</a>
-    </div>
-  </nav>
+<body class="flex flex-col items-center text-center">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full backdrop-blur-md" style="background: rgba(255,255,255,0.02);">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4 text-gray-100">
+      <div class="text-2xl font-bold text-green-400">ClientSolutions.AI</div>
+      <div class="space-x-6 text-lg">
+        <a href="#services" class="hover:text-green-300">Services</a>
+        <a href="#demo" class="hover:text-green-300">Live Demo</a>
+        <a href="#retainers" class="hover:text-green-300">Monthly Retainers</a>
+        <a href="#contact" class="hover:text-green-300">Contact</a>
+      </div>
+    </nav>
+  </header>
 
   <!-- Hero Section -->
-  <section class="flex flex-col items-center justify-center text-center py-40 px-6 mt-20">
-    <h2 class="text-5xl font-extrabold mb-6 text-green-400">Try Our Smart Lead Generator</h2>
-    <p class="text-xl text-gray-300 mb-10 max-w-2xl">Experience how our AI captures, qualifies, and stores high-value business leads in real-time.</p>
+  <section class="flex items-center justify-center h-screen w-full text-center">
+    <div>
+      <h1 class="text-6xl font-bold mb-4 text-green-400">AI-Powered Lead Generation</h1>
+      <p class="text-2xl text-gray-300 max-w-2xl mx-auto">
+        Automate outreach, capture new clients, and grow revenue — all on autopilot.
+      </p>
+    </div>
+  </section>
 
-<form id="leadForm" action="https://hooks.zapier.com/hooks/catch/24974636/u5f8a42/" method="POST">
-      <!-- Honeypot -->
-      <input type="text" name="_gotcha" style="display:none">
+  <!-- Services Section -->
+  <section id="services" class="py-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+    <h2 class="section-title col-span-full">Services</h2>
+    <div class="card">
+      <h3 class="text-xl font-semibold mb-2">AI Lead Generation Systems</h3>
+      <p>Custom-built lead capture and qualification workflows that find clients 24/7.</p>
+    </div>
+    <div class="card">
+      <h3 class="text-xl font-semibold mb-2">Smart Automation Setup</h3>
+      <p>Integrate your CRM, email, and marketing tools so your business runs on autopilot.</p>
+    </div>
+    <div class="card">
+      <h3 class="text-xl font-semibold mb-2">Pipeline Optimization</h3>
+      <p>Increase close rates with automated follow-ups and AI-driven messaging sequences.</p>
+    </div>
+    <div class="card">
+      <h3 class="text-xl font-semibold mb-2">Performance Analytics</h3>
+      <p>Real-time dashboards showing traffic, conversion, and customer acquisition data.</p>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 gap-6">
-        <div>
-          <label for="name" class="block mb-2 text-gray-300">Name</label>
-          <input id="name" name="name" type="text" required
-            class="w-full p-3 rounded-md bg-transparent border border-gray-700 focus:border-green-400 focus:ring-0" />
-        </div>
-
-        <div>
-          <label for="email" class="block mb-2 text-gray-300">Email</label>
-          <input id="email" name="_replyto" type="email" required
-            class="w-full p-3 rounded-md bg-transparent border border-gray-700 focus:border-green-400 focus:ring-0" />
-        </div>
-
-        <div>
-          <label for="business" class="block mb-2 text-gray-300">Business Type</label>
-          <input id="business" name="business" type="text" required
-            class="w-full p-3 rounded-md bg-transparent border border-gray-700 focus:border-green-400 focus:ring-0" />
-        </div>
-
-        <div>
-          <label for="website" class="block mb-2 text-gray-300">Website <span class="text-gray-500 text-sm">(optional)</span></label>
-          <input id="website" name="website" type="url"
-            placeholder="https://yourbusiness.com"
-            class="w-full p-3 rounded-md bg-transparent border border-gray-700 focus:border-green-400 focus:ring-0" />
-        </div>
-
-        <div>
-          <label for="phone" class="block mb-2 text-gray-300">Phone Number</label>
-          <input id="phone" name="phone" type="tel" required
-            placeholder="+1 (555) 123-4567"
-            class="w-full p-3 rounded-md bg-transparent border border-gray-700 focus:border-green-400 focus:ring-0" />
-        </div>
-
-        <button type="submit"
-          class="w-full py-3 mt-4 bg-green-500 hover:bg-green-600 text-black font-bold rounded-lg transition">
-          Submit Lead
-        </button>
-      </div>
-
+  <!-- Live Demo Section -->
+  <section id="demo" class="py-20 max-w-6xl mx-auto">
+    <h2 class="section-title">Live Demo</h2>
+    <div class="card max-w-xl mx-auto">
+      <p class="text-gray-300 mb-6">
+        Submit your info below to see how leads are captured and sent instantly to your CRM.
+      </p>
+      <form id="leadForm" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required class="w-full mb-3 px-4 py-2 rounded bg-transparent border border-gray-600 focus:outline-none" />
+        <input type="email" name="_replyto" placeholder="Your Email" required class="w-full mb-3 px-4 py-2 rounded bg-transparent border border-gray-600 focus:outline-none" />
+        <input type="text" name="business" placeholder="Business Name" required class="w-full mb-3 px-4 py-2 rounded bg-transparent border border-gray-600 focus:outline-none" />
+        <input type="url" name="website" placeholder="Website (optional)" class="w-full mb-3 px-4 py-2 rounded bg-transparent border border-gray-600 focus:outline-none" />
+        <input type="tel" name="phone" placeholder="Phone Number" required class="w-full mb-3 px-4 py-2 rounded bg-transparent border border-gray-600 focus:outline-none" />
+        <input type="text" name="_gotcha" class="hidden-field" />
+        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded transition">Submit</button>
+      </form>
       <p id="successMessage" class="success-message">✅ Thank you! Your lead has been submitted successfully.</p>
-    </form>
+    </div>
+  </section>
+
+  <!-- Monthly Retainers Section -->
+  <section id="retainers" class="py-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <h2 class="section-title col-span-full">Monthly Retainers</h2>
+
+    <div class="card">
+      <h3 class="text-xl font-semibold mb-2">Starter</h3>
+      <p>Perfect for small businesses beginning automation. Includes 1 AI workflow + monthly report.</p>
+      <p class="mt-2 text-green-400 font-bold text-lg">$299/month</p>
+    </div>
+
+    <div class="card">
+      <h3 class="text-xl font-semibold mb-2">Professional</h3>
+      <p>Expanded automations, CRM integration, and personalized outreach sequences.</p>
+      <p class="mt-2 text-green-400 font-bold text-lg">$599/month</p>
+    </div>
+
+    <div class="card">
+      <h3 class="text-xl font-semibold mb-2">Enterprise</h3>
+      <p>Full AI suite, analytics dashboards, API integrations, and dedicated support.</p>
+      <p class="mt-2 text-green-400 font-bold text-lg">$999/month</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 max-w-4xl mx-auto text-center">
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="text-gray-400 mb-8">Questions? Collaborations? Let's talk.</p>
+    <p class="text-lg text-green-400 font-semibold">clientsolutions.ai@gmail.com</p>
+    <p class="text-lg text-green-400 font-semibold">+1 (512) 230-7799</p>
   </section>
 
   <!-- Footer -->
-  <footer class="mt-auto py-6 text-gray-500 text-center">
-    © 2025 ClientSolutions AI — Smart Automation for Business Growth
+  <footer class="py-6 border-t border-gray-800 text-gray-500">
+    © 2025 ClientSolutions.AI — All Rights Reserved
   </footer>
 
+  <!-- JavaScript -->
   <script>
-    const form = document.querySelector("form");
-    const successMessage = document.getElementById("successMessage");
+    const ZAPIER_HOOK = 'https://hooks.zapier.com/hooks/catch/24974636/u5f8a42/';
+    const form = document.getElementById('leadForm');
+    const successMessage = document.getElementById('successMessage');
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
+      if (formData.get('_gotcha')) return;
+
+      const response = await fetch(ZAPIER_HOOK, {
+        method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
       });
+
       if (response.ok) {
         form.reset();
-        successMessage.style.display = "block";
+        successMessage.style.display = 'block';
+      } else {
+        alert('Submission failed — please try again.');
       }
     });
   </script>
-
-  <script>
-  const ZAPIER_HOOK = 'https://hooks.zapier.com/hooks/catch/24974636/u5f8a42/';
-  const form = document.getElementById('leadForm');
-  const successMessage = document.getElementById('successMessage');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    // honeypot check
-    if (formData.get('_gotcha')) {
-      return;
-    }
-    const response = await fetch(ZAPIER_HOOK, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      form.reset();
-      successMessage.style.display = 'block';
-    } else {
-      alert('Submission failed — please try again.');
-    }
-  });
-</script>
-
 </body>
 </html>
